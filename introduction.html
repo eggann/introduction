@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "UTF-8" />
+<title> EvanYeh_introduction </title>
+</head>
+<body>
+    <h1>Evan Yeh 的自我介紹</h1>
+    <div id="list"></div>
+    <script>
+    let list = document.getElementById("list");
+    let src = "https://eggann.github.io/introduction/data/data.json";
+    fetch(src).then(function(response){
+        return response.json();
+    }).then(function(result){
+        console.log("資料看一下", result);
+
+        list.innerHTML="";
+        let qna;
+        for(let i=0; i<result.length; i++){
+            qna = result[i];
+            list.innerHTML += qna.question.bold() + " - " + "<br/>" + qna.answer + "<hr/>";
+        }
+        
+    });
+    </script>
+</body>
+</html>
